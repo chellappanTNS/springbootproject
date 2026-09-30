@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: springbootproject
+
+
+  datasource:
+    url: ${DB_URL}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  profiles:
+    active: dev
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+    
+app:
+  name: Spring Boot Customer Application
+  version: 1.0
+  
+  management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
